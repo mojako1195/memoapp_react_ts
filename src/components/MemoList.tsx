@@ -11,7 +11,7 @@ export const MemoList: FC<Props> = (props) => {
 
   return (
     <SContainer>
-      <p>メモ一覧</p>
+      <h3>メモ一覧</h3>
       <ul>
         {memos.map((memo, index) => {
           return (
@@ -30,6 +30,15 @@ export const MemoList: FC<Props> = (props) => {
 
 const SButton = styled.button`
   margin-left: 16px;
+  display: inline-block;
+  border: 1px solid #fc9a18;
+  background: #fc9a18;
+  padding: 3px;
+  border-radius: 8px;
+  text-align: center;
+  width: 50px;
+  color: #fff;
+  font-size: 14px;
 `;
 
 const SContainer = styled.div`
