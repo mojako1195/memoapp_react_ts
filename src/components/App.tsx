@@ -15,8 +15,10 @@ export const App: FC = () => {
 
   // 追加ボタン
   const onClickAdd = () => {
-    addMemo(text);
-    setText("");
+    if (text) {
+      addMemo(text);
+      setText("");
+    }
   };
 
   // 削除ボタン
