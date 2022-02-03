@@ -14,12 +14,14 @@ export const MemoList: FC<Props> = (props) => {
       <p>メモ一覧</p>
       <ul>
         {memos.map((memo, index) => {
-          <li key={memo}>
-            <SMemoWrapper>
-              <p>{memo}</p>
-              <SButton onClick={() => onClickDelete(index)}>削除</SButton>
-            </SMemoWrapper>
-          </li>;
+          return (
+            <li key={memo}>
+              <SMemoWrapper>
+                <p>{memo}</p>
+                <SButton onClick={() => onClickDelete(index)}>削除</SButton>
+              </SMemoWrapper>
+            </li>
+          );
         })}
       </ul>
     </SContainer>
