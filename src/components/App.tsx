@@ -1,12 +1,13 @@
 import { ChangeEvent, useState, FC, useCallback } from "react";
 import styled from "styled-components";
 import { MemoList } from "./MemoList";
+import { useMemoList } from "../hooks/udeMemoList";
 
 export const App: FC = () => {
+  // カスタムフックから取得
+  const { memos, addMemo, deleteMemo } = useMemoList();
   // 入力値
   const [text, setText] = useState<string>("");
-  // メモ一覧
-  const [memos, setMemos] = useState<string[]>([]);
 
   const onChangeText = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -14,20 +15,16 @@ export const App: FC = () => {
 
   // 追加ボタン
   const onClickAdd = () => {
-    const newMemos = [...memos];
-    newMemos.push(text);
-    setMemos(newMemos);
+    addMemo(text);
     setText("");
   };
 
   // 削除ボタン
   const onClickDelete = useCallback(
     (index: number) => {
-      const newMemos = [...memos];
-      newMemos.splice(index, 1);
-      setMemos(newMemos);
+      deleteMemo(index);
     },
-    [memos]
+    [deleteMemo]
   );
 
   return (
